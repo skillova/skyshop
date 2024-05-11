@@ -7,14 +7,10 @@ class Product(models.Model):
         verbose_name="Наименование",
         help_text="Введите наименование продукта",
     )
-    description = models.ForeignKey(
-        "Category",
-        on_delete=models.SET_NULL,
+    description = models.CharField(
+        max_length=100,
         verbose_name="Описание",
-        help_text="Введите описание продукта",
-        blank=True,
-        null=True,
-        related_name="Products"
+        help_text="Введите описание продукта"
     )
     image = models.ImageField(
         upload_to="products/images",
@@ -23,8 +19,13 @@ class Product(models.Model):
         verbose_name="Изображение",
         help_text="Загрузите изображение продукта",
     )
-    category = models.CharField(
-        max_length=100, verbose_name="Категория", help_text="Введите категорию продукта"
+    category = models.ForeignKey(
+        "Category",
+        on_delete=models.SET_NULL,
+        verbose_name="Категория", help_text="Введите категорию продукта",
+        blank=True,
+        null=True,
+        related_name="Products"
     )
     price = models.FloatField(
         blank=False,
@@ -74,4 +75,4 @@ class Category(models.Model):
 
     def __str__(self):
         # Строковое отображение объекта
-        return f"{self.name} {self.description}"
+        return f"{self.name}: {self.description}"
