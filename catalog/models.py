@@ -7,8 +7,9 @@ class Product(models.Model):
         verbose_name="Наименование",
         help_text="Введите наименование продукта",
     )
-    description = models.CharField(
-        max_length=100,
+    description = models.TextField(
+        blank=True,
+        null=True,
         verbose_name="Описание",
         help_text="Введите описание продукта"
     )
@@ -22,24 +23,27 @@ class Product(models.Model):
     category = models.ForeignKey(
         "Category",
         on_delete=models.SET_NULL,
-        verbose_name="Категория", help_text="Введите категорию продукта",
         blank=True,
         null=True,
+        verbose_name="Категория",
+        help_text="Введите категорию продукта",
         related_name="Products"
     )
-    price = models.FloatField(
-        blank=False,
-        null=False,
+    price = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
         verbose_name="Цена за покупку",
-        help_text="Введите цену продукта",
+        help_text="Введите цену продукта"
     )
     created_at = models.DateField(
+        auto_now_add=True,
         blank=True,
         null=True,
         verbose_name="Дата создания",
         help_text="Введите дату создания продукта",
     )
     updated_at = models.DateField(
+        auto_now_add=True,
         blank=True,
         null=True,
         verbose_name="Дата последнего изменения",
@@ -63,10 +67,10 @@ class Category(models.Model):
         help_text="Введите наименование категории",
     )
     description = models.TextField(
-        verbose_name="Описание",
-        help_text="Введите описание категории",
         blank=True,
         null=True,
+        verbose_name="Описание",
+        help_text="Введите описание категории",
     )
 
     class Meta:
