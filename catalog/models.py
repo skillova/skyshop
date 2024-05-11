@@ -79,4 +79,4 @@ class Category(models.Model):
 
     def __str__(self):
         # Строковое отображение объекта
-        return f"{self.name}: {self.description}"
+        return self.name
