@@ -12,14 +12,15 @@
                     <h1 class="card-title pricing-card-title">{{ product.price }} ₽</h1>
                     <div class="card">
                         <img src="{{ product.image | media_filter }}" alt="">
-                        <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                            <li>- Неограниченная лицензия</li>
-                            <li>- Поддержка</li>
-                            <li>- Установка на сервер</li>
-                            <li>- Получение обновлений</li>
-                        </ul>
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header text-md-start">
+                    <h4 class="my-0 font-weight-normal">{{ product.description }}</h4>
                 </div>
             </div>
         </div>
