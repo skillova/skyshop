@@ -1,0 +1,30 @@
+{% extends 'catalog/home.html' %}
+{% load my_tags %}
+{% block products %}
+
+    <div class="row text-center">
+        {% for product in products %}
+            <div class="col-3">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{ product.price }} ₽</h1>
+                        <div class="card">
+                            <img src="{{ product.image | media_filter }}" alt="">
+                            <ul class="list-unstyled mt-3 mb-4 text-start m-3 text-secondary">
+                                <li>- {{ product.description | slice:100 }}</li>
+                            </ul>
+                            <div class="btn-group">
+                                <a class="btn btn-success" href="{% url 'catalog:product_info' product.pk %}"
+                                   role="button">Обзор</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
