@@ -3,7 +3,7 @@
 {% block products %}
 
     <div class="row text-center">
-        {% for product in products %}
+        {% for product in object_list %}
             <div class="col-3">
                 <div class="card mb-4 box-shadow">
                     <div class="card-header">
@@ -17,7 +17,7 @@
                                 <li>- {{ product.description | slice:100 }}</li>
                             </ul>
                             <div class="btn-group">
-                                <a class="btn btn-success" href="{% url 'catalog:product_info' product.pk %}"
+                                <a class="btn btn-success" href="{% url 'catalog:product_detail' product.pk %}"
                                    role="button">Обзор</a>
                             </div>
                         </div>
