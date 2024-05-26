@@ -1,25 +1,32 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+
+from catalog.forms import ProductForm
 from catalog.models import Product
 
 
-# Create your views here.
+class CatalogListView(ListView):
+    model = Product
 
-def home(request):
-    products = Product.objects.all()
-    context = {"products": products}
-    return render(request, 'catalog/products_list.html', context)
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
 
 
 def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        print(f'You have new message from {name}({email}): {message}')
-    return render(request, 'catalog/contacts.html')
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+        print(f"You have new message from {name}({email}): {message}")
+    return render(request, "catalog/contacts.html")
 
 
-def product_info(requests, pk):
-    product = get_object_or_404(Product, pk=pk)
-    context = {'product': product}
-    return render(requests, 'catalog/product_info.html', context)
+class ProductDetailView(DetailView):
+    model = Product

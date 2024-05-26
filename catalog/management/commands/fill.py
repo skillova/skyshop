@@ -9,7 +9,7 @@ class Command(BaseCommand):
     @staticmethod
     def json_read_categories():
         # Здесь мы получаем данные из фикстуры с категориями
-        with open('category.json', encoding='utf-8') as file:
+        with open("category.json", encoding="utf-8") as file:
             data = json.load(file)
             return data
 

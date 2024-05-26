@@ -1,17 +1,17 @@
 {% extends 'catalog/home.html' %}
 {% load my_tags %}
-{% block products %}
+{% block content %}
 
     <div class="row text-center">
         <div class="col-3">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+                    <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">{{ product.price }} ₽</h1>
+                    <h1 class="card-title pricing-card-title">{{ object.price }} ₽</h1>
                     <div class="card">
-                        <img src="{{ product.image | media_filter }}" alt="">
+                        <img src="{{ object.image | media_filter }}" alt="">
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
         <div class="col-9">
             <div class="card mb-4 box-shadow">
                 <div class="card-header text-md-start">
-                    <h4 class="my-0 font-weight-normal">{{ product.description }}</h4>
+                    <h4 class="my-0 font-weight-normal">{{ object.description }}</h4>
                 </div>
             </div>
         </div>

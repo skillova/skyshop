@@ -11,7 +11,7 @@ class Product(models.Model):
         blank=True,
         null=True,
         verbose_name="Описание",
-        help_text="Введите описание продукта"
+        help_text="Введите описание продукта",
     )
     image = models.ImageField(
         upload_to="products/images",
@@ -27,13 +27,13 @@ class Product(models.Model):
         null=True,
         verbose_name="Категория",
         help_text="Введите категорию продукта",
-        related_name="Products"
+        related_name="Products",
     )
     price = models.DecimalField(
         max_digits=8,
         decimal_places=2,
         verbose_name="Цена за покупку",
-        help_text="Введите цену продукта"
+        help_text="Введите цену продукта",
     )
     created_at = models.DateField(
         auto_now_add=True,
