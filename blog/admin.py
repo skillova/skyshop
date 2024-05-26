@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from blog.models import Blog
+
+
+@admin.register(Blog)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ("id", "title", "content", "slug", "preview", "created_at", "sign_publication", "is_published")
