@@ -24,7 +24,6 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
 
 
