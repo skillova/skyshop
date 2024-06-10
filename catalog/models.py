@@ -93,7 +93,7 @@ class Version(models.Model):
         verbose_name='Версия'
     )
     number_version = models.IntegerField(
-        max_length=50,
+        default=0,
         verbose_name='Номер версии'
     )
     current_version = models.BooleanField(

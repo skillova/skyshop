@@ -20,6 +20,7 @@
                                 <a class="btn btn-success" href="{% url 'catalog:product_detail' product.pk %}"
                                    role="button">Обзор</a>
                             </div>
+                            <div class="card-text">Текущая версия: {{ product.version }}</div>
                         </div>
                     </div>
                 </div>
