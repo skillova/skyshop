@@ -1,6 +1,6 @@
 from django.forms import ModelForm, forms, BooleanField
 
-from catalog.models import Product
+from catalog.models import Product, Version
 
 words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
 
@@ -35,3 +35,9 @@ class ProductForm(StyleFormMixin, ModelForm):
         if cleaned_data in words:
             raise forms.ValidationError('Невалидное описание')
         return cleaned_data
+
+
+class VersionForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Version
+        fields = '__all__'
