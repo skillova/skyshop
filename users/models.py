@@ -28,6 +28,11 @@ class User(AbstractUser):
         blank=True,
         verbose_name="Phone number"
     )
+    token = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        verbose_name="Token")
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
