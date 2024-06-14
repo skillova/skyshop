@@ -32,6 +32,7 @@ class UserCreateView(CreateView):
 
 
 def email_verification(request, token):
-    user = get_object_or_404(token=token)
+    user = get_object_or_404(User, token=token)
     user.is_active = True
-    return redirect(reverse("user:login"))
+    user.save()
+    return redirect(reverse("users:login"))
