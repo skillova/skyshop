@@ -84,26 +84,17 @@ class Category(models.Model):
 
 class Version(models.Model):
     product = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE,
-        verbose_name='Продукт'
+        Product, on_delete=models.CASCADE, verbose_name="Продукт"
     )
-    version = models.CharField(
-        max_length=100,
-        verbose_name='Версия'
-    )
-    number_version = models.IntegerField(
-        max_length=50,
-        verbose_name='Номер версии'
-    )
+    version = models.CharField(max_length=100, verbose_name="Версия")
+    number_version = models.IntegerField(default=0, verbose_name="Номер версии")
     current_version = models.BooleanField(
-        default=True,
-        verbose_name='Признак текущей версии'
+        default=True, verbose_name="Признак текущей версии"
     )
 
     class Meta:
-        verbose_name = 'Версия'
-        verbose_name_plural = 'Версии'
+        verbose_name = "Версия"
+        verbose_name_plural = "Версии"
 
     def __str__(self):
-        return f'{self.number_version}'
+        return f"{self.number_version}"
