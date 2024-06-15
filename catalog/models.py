@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Product(models.Model):
     name = models.CharField(
@@ -49,6 +51,12 @@ class Product(models.Model):
         verbose_name="Дата последнего изменения",
         help_text="Введите дату изменения продукта",
     )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        verbose_name='Пользователь',
+        null=True,
+        blank=True)
 
     class Meta:
         verbose_name = "Продукт"  # Настройка для наименования одного объекта
