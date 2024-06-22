@@ -56,12 +56,19 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         verbose_name='Пользователь',
         null=True,
-        blank=True)
+        blank=True
+    )
+
 
     class Meta:
         verbose_name = "Продукт"  # Настройка для наименования одного объекта
         verbose_name_plural = "Продукты"  # Настройка для наименования набора объектов
         ordering = ["category", "name"]
+        permissions = [
+            ('can_set_product', 'can set product'),
+            ('can_edit_description', 'can edit description'),
+            ('can_edit_category', 'can edit category')
+        ]
 
     def __str__(self):
         # Строковое отображение объекта
