@@ -28,10 +28,17 @@ class CatalogListView(ListView):
         return context
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:home")
+
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+        return super().form_valid(form)
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
@@ -73,7 +80,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         raise PermissionDenied
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy("catalog:home")
 

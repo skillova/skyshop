@@ -31,6 +31,7 @@ class ProductForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
+        exclude = ("owner",)
 
 
 class ProductModeratorForm(StyleFormMixin, ModelForm):
