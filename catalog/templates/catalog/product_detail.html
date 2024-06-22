@@ -12,7 +12,7 @@
                     <h1 class="card-title pricing-card-title">{{ object.price }} ₽</h1>
                     <div class="card">
                         <img src="{{ object.image | media_filter }}" alt="">
-                        {% if perms.object.can_set_product and perms.object.description and perms.object.can_edit_category or user == object.owner%}
+                        {% if perms.catalog.can_set_product and perms.catalog.can_edit_description and perms.catalog.can_edit_category or user == object.owner%}
                         <a class="btn btn-warning" href="{% url 'catalog:update_product' object.pk %}" role="button">Редактировать</a>
                         {% endif %}
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
