@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Product(models.Model):
     name = models.CharField(
@@ -49,11 +51,23 @@ class Product(models.Model):
         verbose_name="Дата последнего изменения",
         help_text="Введите дату изменения продукта",
     )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        verbose_name='Пользователь',
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Продукт"  # Настройка для наименования одного объекта
         verbose_name_plural = "Продукты"  # Настройка для наименования набора объектов
         ordering = ["category", "name"]
+        permissions = [
+            ('can_set_product', 'can set product'),
+            ('can_edit_description', 'can edit description'),
+            ('can_edit_category', 'can edit category')
+        ]
 
     def __str__(self):
         # Строковое отображение объекта

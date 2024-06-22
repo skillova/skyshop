@@ -32,6 +32,12 @@ class ProductForm(StyleFormMixin, ModelForm):
         model = Product
         fields = "__all__"
 
+
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = "__all__"
+
     def clean_name(self):
         cleaned_data = self.cleaned_data.get("name")
 
