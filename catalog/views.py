@@ -12,7 +12,8 @@ from django.views.generic import (
 )
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
+from catalog.services import get_qs_from_cache
 
 
 class CatalogListView(ListView):
@@ -96,3 +97,11 @@ def contacts(request):
 
 class ProductDetailView(DetailView):
     model = Product
+
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'catalog/category_list.html'
+
+    def get_queryset(self):
+        return get_qs_from_cache(qs=Category.objects.all(), key='categories_list')
